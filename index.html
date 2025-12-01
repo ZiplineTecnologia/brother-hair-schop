@@ -185,6 +185,7 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            background-color: #1a1a1a;
             background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1503951914875-452162b7f304?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
@@ -350,6 +351,120 @@
             position: absolute;
             left: 0;
             font-size: 1.2rem;
+        }
+
+        /* Carousel */
+        .carousel-section {
+            background: #151515;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .carousel-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            aspect-ratio: 16/9;
+        }
+
+        .carousel-slide {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-slide img:hover {
+            transform: scale(1.02);
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            background: #444;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .dot.active {
+            background: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 90%;
+            max-height: 80vh;
+            border-radius: 8px;
+        }
+
+        .modal-btn {
+            margin-top: 20px;
+            display: inline-block;
+            padding: 15px 30px;
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .modal-btn:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+        }
+
+        .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #bbb;
         }
 
         /* Footer */
@@ -540,8 +655,12 @@
     <section id="home" class="hero">
         <h1>Brothers Hair Shop</h1>
         <p>A sua barbearia, nosso compromisso.</p>
-        <a href="https://www.google.com/search?q=https://www.instagram.com/brothershairshop%3Figsh%3DMXZxZWJqajRoNG92%26utm_source%3Dqr"
-            target="_blank" class="btn">Siga-nos no Instagram</a>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+            <a href="https://wa.me/5527999999999" target="_blank" class="btn"
+                style="background-color: #25D366; border-color: #25D366;">Agendar no WhatsApp</a>
+            <a href="https://www.google.com/search?q=https://www.instagram.com/brothershairshop%3Figsh%3DMXZxZWJqajRoNG92%26utm_source%3Dqr"
+                target="_blank" class="btn">Siga-nos no Instagram</a>
+        </div>
     </section>
 
     <!-- About -->
@@ -646,6 +765,23 @@
         </div>
     </section>
 
+    <!-- Carousel Section -->
+    <section id="gallery" class="carousel-section">
+        <h2>Nossa Galeria</h2>
+        <div class="carousel-container">
+            <div class="carousel-slide" id="carouselSlide">
+                <!-- Images will be injected by JS -->
+            </div>
+        </div>
+        <div class="carousel-dots" id="carouselDots">
+            <!-- Dots will be injected by JS -->
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="https://wa.me/5527999999999" target="_blank" class="btn"
+                style="background-color: #25D366; border-color: #25D366; color: #fff;">Fale Conosco no WhatsApp</a>
+        </div>
+    </section>
+
     <!-- Contact & Footer -->
     <footer id="contact">
         <div class="footer-content">
@@ -668,8 +804,10 @@
                     <strong>Horário:</strong>
                     <span>Terça a Sexta: 8h às 18h, Sábado: 8h às 15h</span>
                 </div>
+                <a href="https://wa.me/5527999999999" target="_blank" class="social-link"
+                    style="background-color: #25D366;">Fale no WhatsApp &rarr;</a>
                 <a href="https://www.google.com/search?q=https://www.instagram.com/brothershairshop%3Figsh%3DMXZxZWJqajRoNG92%26utm_source%3Dqr"
-                    target="_blank" class="social-link">Siga-nos no Instagram &rarr;</a>
+                    target="_blank" class="social-link" style="margin-top: 10px;">Instagram &rarr;</a>
             </div>
             <div class="map-container">
                 <!-- Google Maps Iframe -->
@@ -682,6 +820,13 @@
             <p>&copy; 2025 Brothers Hair Shop. Todos os direitos reservados.</p>
         </div>
     </footer>
+
+    <!-- Modal -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImg">
+        <a href="https://wa.me/5527999999999" target="_blank" class="modal-btn">Chamar no WhatsApp</a>
+    </div>
 
     <script>
         // Mobile Menu Toggle
@@ -697,6 +842,82 @@
             hamburger.classList.remove("active");
             navMenu.classList.remove("active");
         }));
+
+        // Carousel Logic
+        const carouselSlide = document.getElementById('carouselSlide');
+        const carouselDots = document.getElementById('carouselDots');
+        const totalImages = 16; // Total images from gallery_1.jpg to gallery_16.jpg
+        let counter = 0;
+
+        // Initialize Carousel
+        for (let i = 1; i <= totalImages; i++) {
+            // Create Image
+            const img = document.createElement('img');
+            img.src = `gallery_${i}.jpg`;
+            img.alt = `Galeria Brothers Hair Shop ${i}`;
+            img.loading = "lazy";
+            img.addEventListener('click', () => openModal(`gallery_${i}.jpg`));
+            carouselSlide.appendChild(img);
+
+            // Create Dot
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            if (i === 1) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i - 1));
+            carouselDots.appendChild(dot);
+        }
+
+        const dots = document.querySelectorAll('.dot');
+
+        function updateCarousel() {
+            carouselSlide.style.transform = `translateX(${-counter * 100}%)`;
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[counter].classList.add('active');
+        }
+
+        function goToSlide(index) {
+            counter = index;
+            updateCarousel();
+            resetTimer();
+        }
+
+        // Modal Logic
+        const modal = document.getElementById("imageModal");
+        const modalImg = document.getElementById("modalImg");
+        const span = document.getElementsByClassName("close")[0];
+
+        function openModal(src) {
+            modal.style.display = "flex";
+            modalImg.src = src;
+            clearInterval(slideInterval); // Pause carousel
+        }
+
+        span.onclick = function () {
+            modal.style.display = "none";
+            resetTimer(); // Resume carousel
+        }
+
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+                resetTimer();
+            }
+        }
+
+        function nextSlide() {
+            counter++;
+            if (counter >= totalImages) {
+                counter = 0;
+            }
+            updateCarousel();
+        }
+
+        let slideInterval = setInterval(nextSlide, 3000);
+
+        function resetTimer() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 3000);
+        }
     </script>
 </body>
 
